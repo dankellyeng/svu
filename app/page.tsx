@@ -1,95 +1,132 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import { useState } from "react";
+import IconButton from "@mui/material/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
+import styles from "./page.module.scss";
+import { TextField } from "@mui/material";
+import { Button } from "@mui/material";
 
 export default function Home() {
+  const [showTextFields, setShowTextFields] = useState(false);
+  const [lineOne, setLineOne] = useState("LAW &");
+  const [lineTwo, setLineTwo] = useState("ORDER");
+  const [lineThree, setLineThree] = useState("SPECIAL VICTIMS UNIT");
+
+  const playSound = () => {
+    const audio = new Audio("/sounds/daadaa.mp3");
+    audio.play();
+  };
+
+  const handleInputChange =
+    (setter: React.Dispatch<React.SetStateAction<string>>) =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setter(event.target.value.toUpperCase());
+    };
+
+  const toggleEditText = (): void => {
+    setShowTextFields(!showTextFields);
+  };
+
+  const handleSave = (): void => {
+    setShowTextFields(false);
+  };
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <div className={styles.textContainer} onClick={playSound}>
+        <div className={styles.textAndShadowContainer}>
+          <div className={styles.law}>{lineOne}</div>
+          <div className={styles.lawShadow}>{lineOne}</div>
         </div>
+
+        <div className={styles.textAndShadowContainer}>
+          <div className={styles.order}>{lineTwo}</div>
+          <div className={styles.orderShadow}>{lineTwo}</div>
+        </div>
+
+        <div className={styles.textAndShadowContainer}>
+          <div className={styles.svu}>{lineThree}</div>
+          <div className={styles.svuShadow}>{lineThree}</div>
+        </div>
+        <IconButton
+          sx={{
+            color: showTextFields ? "transparent" : "white",
+            position: "absolute",
+            right: "5px",
+            bottom: "5px",
+          }}
+          aria-label="edit"
+          onClick={toggleEditText}
+        >
+          <EditIcon />
+        </IconButton>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {showTextFields && (
+        <div className={styles.textFieldContainer}>
+          <TextField
+            onChange={handleInputChange(setLineOne)}
+            sx={{
+              input: { color: "white", padding: "5px" },
+              label: { color: "gray" },
+              "& label.Mui-focused": { color: "white" },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": { borderColor: "gray" },
+                "&:hover fieldset": { borderColor: "white" },
+                "&.Mui-focused fieldset": { borderColor: "white" },
+              },
+            }}
+            id="law"
+            variant="outlined"
+            placeholder={lineOne}
+          />
+          <TextField
+            onChange={handleInputChange(setLineTwo)}
+            sx={{
+              input: { color: "white", padding: "5px" },
+              label: { color: "gray" },
+              "& label.Mui-focused": { color: "white" },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": { borderColor: "gray" },
+                "&:hover fieldset": { borderColor: "white" },
+                "&.Mui-focused fieldset": { borderColor: "white" },
+              },
+            }}
+            id="order"
+            variant="outlined"
+            placeholder={lineTwo}
+          />
+          <TextField
+            onChange={handleInputChange(setLineThree)}
+            sx={{
+              input: { color: "white", padding: "5px" },
+              label: { color: "gray" },
+              "& label.Mui-focused": { color: "white" },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": { borderColor: "gray" },
+                "&:hover fieldset": { borderColor: "white" },
+                "&.Mui-focused fieldset": { borderColor: "white" },
+              },
+            }}
+            id="svu"
+            variant="outlined"
+            placeholder={lineThree}
+          />
+          <Button
+            sx={{
+              color: "white",
+              borderColor: "white",
+              "&:hover": {
+                backgroundColor: "white",
+                color: "black",
+              },
+            }}
+            variant="outlined"
+            onClick={handleSave}
+          >
+            Save
+          </Button>
+        </div>
+      )}
     </main>
   );
 }
