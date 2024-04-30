@@ -1,0 +1,143 @@
+@import "../styles/styles.scss";
+
+.main {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  @include devices(mobile) {
+    padding-bottom: 60px;
+  }
+}
+
+.textAndShadowContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 20%;
+}
+
+.law {
+  position: absolute;
+  font-size: 100px;
+  width: 100%;
+  font-family: "Friz Quadrata";
+  color: white;
+  letter-spacing: -1px;
+  padding-bottom: 15px;
+  z-index: 1;
+  text-shadow: -5px 0 0 black;
+  @include devices(mobile) {
+    font-size: 80px;
+  }
+}
+
+.lawShadow {
+  position: absolute;
+  font-size: 106px;
+  width: 100%;
+  font-family: "Friz Quadrata";
+  color: #2078ce;
+  letter-spacing: -5px;
+  transform: translate(-10px, -3px);
+  filter: blur(3px);
+  background: radial-gradient(circle at center, #31c6dc, #2078ce);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  @include devices(mobile) {
+    font-size: 86px;
+  }
+}
+
+.order {
+  position: absolute;
+  font-size: 100px;
+  width: 100%;
+  font-family: "Friz Quadrata";
+  color: white;
+  padding-bottom: 15px;
+  z-index: 1;
+  text-shadow: -5px 0 0 black;
+  @include devices(mobile) {
+    font-size: 80px;
+  }
+}
+
+.orderShadow {
+  position: absolute;
+  font-size: 107px;
+  width: 100%;
+  font-family: "Friz Quadrata";
+  letter-spacing: -5px;
+  transform: translate(-12px, -4px);
+  filter: blur(3px);
+  background: radial-gradient(circle at center, #81090e, #9a131c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  @include devices(mobile) {
+    font-size: 86px;
+  }
+}
+
+.svu {
+  position: absolute;
+  font-size: 76px;
+  width: 100%;
+  font-family: "Friz Quadrata";
+  color: white;
+  letter-spacing: -1px;
+  transform: scaleX(0.8);
+  z-index: 1;
+  text-shadow: -5px 0 0 black;
+  @include devices(mobile) {
+    font-size: 56px;
+  }
+}
+
+.svuShadow {
+  position: absolute;
+  font-size: 76px;
+  width: 100%;
+  font-family: "Friz Quadrata";
+  color: #dca85d;
+  background: radial-gradient(circle at center, #dca85d, #c97d49);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -1.5px;
+  transform: translate(-8px, -1px) scaleX(0.81) scaleY(1.09);
+  filter: blur(3px);
+  @include devices(mobile) {
+    font-size: 56px;
+  }
+}
+
+.textFieldContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 20px;
+  margin-top: -56px;
+  @include devices(mobile) {
+    flex-direction: column;
+    margin-top: -185px;
+  }
+}
